@@ -72,12 +72,12 @@ async function loadPokemon(name) {
 
 function showCard() {
     document.getElementById('pokedex').classList.remove('d-none');
-    document.getElementById('overview').classList.add('d-none');
+  //  document.getElementById('overview').classList.add('d-none');
 }
 
 
 function hideCard() {
     document.getElementById('pokedex').classList.add('d-none');
-    document.getElementById('overview').classList.remove('d-none');
+  //  document.getElementById('overview').classList.remove('d-none');
 }
 
