@@ -20,7 +20,7 @@
 
 <body onload="displayOverview()">
   <nav class="">
-    <div class="displayOverview">
+    <div class="">
       <a id="nav-container" class="navbar-brand" href="#">
         <div class="div-left-nav">
           <img id="nav-img" src="/img/pokeball.png" alt="" class="">
@@ -33,21 +33,31 @@
 
   <div onclick="hideCard()" id="pokedex" class="d-none main-overlay">
     <div class="flex-column">
-      <div id ="img-pokedex" class=""> <img src="" class="card-image " alt="${currentPokemon['name']}"></div>
-      <div class=""></div>
+      <div class="flex-center">
+        <span id="pokemon-name" class=""></span>
+    </div>
+      <div class="flex-center">
+      <div  class="rounded-bottom-left white-gameboy"> <img id="img-pokedex" src="" class=" " alt="${currentPokemon['name']}"></div>
+    </div>
       <div class="">
-        <ul class="list-group list-group-flush">
-          <li id="skill-hp" class="list-group-item">hp</li>
-          <li id="skill-attack" class="list-group-item">attack</li>
-          <li id="skill-defence" class="list-group-item">defence</li>
-          <li id="skill-speed" class="list-group-item">speed</li>
-    
+       
+      </div>
+      <div class="">
+        <ul class="">
+          <li id="skill-hp" class="">hp</li>
+          <li id="skill-attack" class="">attack</li>
+          <li id="skill-defence" class="">defence</li>
+          <li id="skill-speed" class="">speed</li>
+
         </ul>
       </div>
     </div>
     <div class="middle-slice"></div>
     <div class="flex-column">
-      <div class=""></div>
+      <div class="gray-box">
+        <p id="height" class=""></p>
+        <p id="weight" class=""></p>
+      </div>
       <div class="blue-sqare-container ">
         <div class="blue-sqare rounded-top-left"></div>
         <div class="blue-sqare"></div>
@@ -61,7 +71,7 @@
       <div class="">
         <div class="card-body">
           <p id="type-1">Type 1</p>
-          <p id="type-2">Type 2</p>
+          <p id="id">id</p>
         </div>
       </div>
     </div>

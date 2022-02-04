@@ -44,28 +44,34 @@ async function displayOverview() {
 */
 
 
-function renderPokemonInfo() {                                                       // shows a variaty of info on selected pokemnon 
-
-    document.getElementById('pokemonName').innerHTML = currentPokemon['name'].toUpperCase();
-    document.getElementById('pokemonImage').src = currentPokemon["sprites"]["other"]["dream_world"]["front_default"];   //its the .img so src =
+function renderPokemonInfo() {  
+    let Types = currentPokemon["types"].length;                                                     // shows a variaty of info on selected pokemnon 
+    console.log(currentPokemon);
+    
+    document.getElementById('pokemon-name').innerHTML = currentPokemon['name'].toUpperCase();
+    document.getElementById('img-pokedex').src = currentPokemon["sprites"]["front_default"];   //its the .img so src =
     document.getElementById('skill-hp').innerHTML = currentPokemon["stats"][0]["base_stat"] + ` hp`;
     document.getElementById('skill-attack').innerHTML = currentPokemon["stats"][1]["base_stat"] + ` attack`;
     document.getElementById('skill-defence').innerHTML = currentPokemon["stats"][2]["base_stat"] + ` defence`;
     document.getElementById('skill-speed').innerHTML = currentPokemon["stats"][5]["base_stat"] + ` speed`;
     document.getElementById('type-1').innerHTML = currentPokemon["types"]["0"]["type"]["name"];
-    document.getElementById('type-2').innerHTML = currentPokemon["types"]["1"]["type"]["name"];
-   
+    document.getElementById('id').innerHTML = '#' + currentPokemon["id"];
+    document.getElementById('height').innerHTML = currentPokemon["height"] +  ` cm`;
+    document.getElementById('weight').innerHTML = currentPokemon["weight"] +  ` kg`;
+      
 }
 
 
 
 async function loadPokemon(name) {
+
     showCard();
     console.log('The picked Pokemon is', name);
     let url = 'https://pokeapi.co/api/v2/pokemon/' + name;        // to lowercase to make all characters small
     let response = await fetch(url);                                                    // wait for the fetch
     currentPokemon = await response.json();                                             //declare api/json to be used later
 
+    
     renderPokemonInfo();                                                         // display single pokemoncard
 }
 
