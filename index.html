@@ -33,31 +33,46 @@
 
   <div onclick="hideCard()" id="pokedex" class="d-none main-overlay">
     <div class="flex-column">
-      <div class="flex-center">
+      <div id="pokemon-name-container" class="flex-center">
         <span id="pokemon-name" class=""></span>
-    </div>
+      </div>
       <div class="flex-center">
-      <div  class="rounded-bottom-left white-gameboy"> <img id="img-pokedex" src="" class=" " alt="${currentPokemon['name']}"></div>
-    </div>
-      <div class="">
-       
+        <div class="rounded-bottom-left white-gameboy"> <img id="img-pokedex" src="" class=" "
+            alt="${currentPokemon['name']}"></div>
       </div>
       <div class="">
-        <ul class="">
-          <li id="skill-hp" class="">hp</li>
-          <li id="skill-attack" class="">attack</li>
-          <li id="skill-defence" class="">defence</li>
-          <li id="skill-speed" class="">speed</li>
 
-        </ul>
       </div>
+      <div class="stipes">
+
+        <div class="skill-container">
+          <span class="skill-writing">hp</span>
+          <span id="skill-hp" class="skill-stats">hp</span>
+
+        </div>
+        <div class="skill-container">
+          <span class="skill-writing">attack</span>
+          <span id="skill-attack" class="skill-stats">attack</span>
+        </div>
+        <div class="skill-container">
+          <span class="skill-writing">defence</span>
+          <span id="skill-defence" class="skill-stats">defence</span>
+        </div>
+        <div class="skill-container">
+          <span class="skill-writing">speed</span>
+          <span id="skill-speed" class="skill-stats">speed</span>
+        </div>
+              </div>
+             
     </div>
     <div class="middle-slice"></div>
     <div class="flex-column">
+      <div class="flex-center stipes rounded-top-left rounded-top-right">
       <div class="gray-box">
         <p id="height" class=""></p>
         <p id="weight" class=""></p>
       </div>
+    </div>
       <div class="blue-sqare-container ">
         <div class="blue-sqare rounded-top-left"></div>
         <div class="blue-sqare"></div>
@@ -68,10 +83,16 @@
         <div class="blue-sqare"></div>
         <div class="blue-sqare rounded-bottom-right"></div>
       </div>
-      <div class="">
-        <div class="card-body">
-          <p id="type-1">Type 1</p>
-          <p id="id">id</p>
+      <div class="flex-center">
+       
+        
+        <div class="flex-center">
+          <div class="gray-box-small">
+            <p id="type-1">Type 1</p>
+          </div>
+          <div class="gray-box-small">
+            <p id="id">id</p>
+          </div>
         </div>
       </div>
     </div>

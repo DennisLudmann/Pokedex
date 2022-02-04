@@ -50,14 +50,15 @@ function renderPokemonInfo() {
     
     document.getElementById('pokemon-name').innerHTML = currentPokemon['name'].toUpperCase();
     document.getElementById('img-pokedex').src = currentPokemon["sprites"]["front_default"];   //its the .img so src =
-    document.getElementById('skill-hp').innerHTML = currentPokemon["stats"][0]["base_stat"] + ` hp`;
-    document.getElementById('skill-attack').innerHTML = currentPokemon["stats"][1]["base_stat"] + ` attack`;
-    document.getElementById('skill-defence').innerHTML = currentPokemon["stats"][2]["base_stat"] + ` defence`;
-    document.getElementById('skill-speed').innerHTML = currentPokemon["stats"][5]["base_stat"] + ` speed`;
+    document.getElementById('skill-hp').innerHTML = currentPokemon["stats"][0]["base_stat"] ;
+    document.getElementById('skill-attack').innerHTML = currentPokemon["stats"][1]["base_stat"] ;
+    document.getElementById('skill-defence').innerHTML = currentPokemon["stats"][2]["base_stat"] ;
+    document.getElementById('skill-speed').innerHTML = currentPokemon["stats"][5]["base_stat"];
     document.getElementById('type-1').innerHTML = currentPokemon["types"]["0"]["type"]["name"];
     document.getElementById('id').innerHTML = '#' + currentPokemon["id"];
-    document.getElementById('height').innerHTML = currentPokemon["height"] +  ` cm`;
-    document.getElementById('weight').innerHTML = currentPokemon["weight"] +  ` kg`;
+    document.getElementById('height').innerHTML = 'Height:' + '&nbsp &nbsp &nbsp &nbsp &nbsp' + currentPokemon["height"]*10  +  `cm`;
+    document.getElementById('weight').innerHTML = 'Weight:' + '&nbsp &nbsp &nbsp &nbsp &nbsp' + currentPokemon["weight"]/10  +  `kg`;
+    document.getElementById('pokemon-name-container').classList.add('bg-${currentPokemon["types"]["0"]["type"]["name"]');
       
 }
 
