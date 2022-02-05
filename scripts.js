@@ -19,12 +19,13 @@ async function displayOverview() {
             <div onclick="loadPokemon('${currentPokemon['name']}')" class="card-wrapper bg-${currentPokemon["types"]["0"]["type"]["name"]}">
                 <img src="${currentPokemon["sprites"]["other"]["dream_world"]["front_default"]}" class="card-image " alt="${currentPokemon['name']}">
                 <div class="card-description">
-                    <h2 class="card-title">${currentPokemon['name'].substring(0,1).toUpperCase() + currentPokemon['name'].substring(1)}</h2>
+                    <h2 class="card-title">${currentPokemon['name'].substring(0,1).toUpperCase() + currentPokemon['name'].substring(1)} </h2>
                     <p class="card-text"> ${currentPokemon["types"]["0"]["type"]["name"]}</p>`
                     if (Types > 1) {                                    // to display only if both types are set
                         pokemonEntryBuild += `<p class="card-text">${currentPokemon["types"]["1"]["type"]["name"]}</p>`
                     }
                     pokemonEntryBuild += `
+                    <div class="flex-end"><span class=" id-card"># ${currentPokemon["id"]}</span></div>
                 </div>
             </div>`
             document.getElementById('overview').innerHTML += pokemonEntryBuild; // let the different elements be in place befor you display it

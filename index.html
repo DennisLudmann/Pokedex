@@ -33,46 +33,39 @@
 
   <div onclick="hideCard()" id="pokedex" class="d-none main-overlay">
     <div class="flex-column">
-      <div id="pokemon-name-container" class="flex-center">
-        <span id="pokemon-name" class=""></span>
-      </div>
+
       <div class="flex-center">
-        <div class="rounded-bottom-left white-gameboy"> <img id="img-pokedex" src="" class=" "
-            alt="${currentPokemon['name']}"></div>
+        <div class=" white-gameboy"> <img id="img-pokedex" src="" class=" " alt="${currentPokemon['name']}"></div>
       </div>
-      <div class="">
 
+      <div class="flex-cross">
+        <div class="flex">
+        <div id="pokemon-name-container" class="flex-center">
+          <span id="pokemon-name" class=""></span>
+        </div>
+
+        
+          <div class="flex-between">
+            <div class="gray-box-small">
+              <p id="type-1">Type 1</p>
+            </div>
+            <div class="gray-box-small">
+              <p id="id">id</p>
+            </div>
+          </div>
+        </div>
+
+        <img src="img/cross.png" class="cross">
       </div>
-      <div class="stipes">
-
-        <div class="skill-container">
-          <span class="skill-writing">hp</span>
-          <span id="skill-hp" class="skill-stats">hp</span>
-
-        </div>
-        <div class="skill-container">
-          <span class="skill-writing">attack</span>
-          <span id="skill-attack" class="skill-stats">attack</span>
-        </div>
-        <div class="skill-container">
-          <span class="skill-writing">defence</span>
-          <span id="skill-defence" class="skill-stats">defence</span>
-        </div>
-        <div class="skill-container">
-          <span class="skill-writing">speed</span>
-          <span id="skill-speed" class="skill-stats">speed</span>
-        </div>
-              </div>
-             
     </div>
     <div class="middle-slice"></div>
     <div class="flex-column">
       <div class="flex-center stipes rounded-top-left rounded-top-right">
-      <div class="gray-box">
-        <p id="height" class=""></p>
-        <p id="weight" class=""></p>
+        <div class="gray-box">
+          <p id="height" class=""></p>
+          <p id="weight" class=""></p>
+        </div>
       </div>
-    </div>
       <div class="blue-sqare-container ">
         <div class="blue-sqare rounded-top-left"></div>
         <div class="blue-sqare"></div>
@@ -84,16 +77,28 @@
         <div class="blue-sqare rounded-bottom-right"></div>
       </div>
       <div class="flex-center">
-       
-        
-        <div class="flex-center">
-          <div class="gray-box-small">
-            <p id="type-1">Type 1</p>
+
+        <div class="stipes width">
+
+          <div class="skill-container">
+            <span class="skill-writing">hp</span>
+            <span id="skill-hp" class="skill-stats">hp</span>
+
           </div>
-          <div class="gray-box-small">
-            <p id="id">id</p>
+          <div class="skill-container">
+            <span class="skill-writing">attack</span>
+            <span id="skill-attack" class="skill-stats">attack</span>
+          </div>
+          <div class="skill-container">
+            <span class="skill-writing">defence</span>
+            <span id="skill-defence" class="skill-stats">defence</span>
+          </div>
+          <div class="skill-container">
+            <span class="skill-writing">speed</span>
+            <span id="skill-speed" class="skill-stats">speed</span>
           </div>
         </div>
+
       </div>
     </div>
 

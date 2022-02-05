@@ -10,7 +10,8 @@ body {
 }
 
 h2 {
-    padding: 20px;
+    padding-left: 20px;
+    padding-top: 12px;
 }
 
 #pokedex {
@@ -188,9 +189,6 @@ h2 {
     background-color: white;
 }
 
-h2 {
-    padding: 20px;
-}
 
 .card-text {
     width: calc(100% - 40px);
@@ -202,15 +200,16 @@ h2 {
 
 .main-overlay {
     justify-content: center;
+    align-items: center;
     display: flex;
     backdrop-filter: blur(19px);
     z-index: 10;
     position: fixed;
-    top: 62px;
+    top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    animation: zoom 1000ms ease-in-out;
+    animation: zoom 1000ms ease-in-out
 }
 
 .flex-column {
@@ -283,18 +282,21 @@ h2 {
     width: 220px;
     justify-content: center;
     border: solid black 0.1px;
+    border-bottom-left-radius: 25px;
+    margin-top: 22px;
 }
 
 #pokemon-name {
     background-color: #4f9ea1;
-    ;
     border: solid black 0.1px;
     padding: 9px;
-    width: 164px;
+    width: 165px;
     border-radius: 4px;
     text-align: center;
     margin-bottom: 10px;
-    margin-top: 10px;
+    margin-left: 20px;
+    margin-top: 28px;
+    margin-bottom: 28px;
 }
 
 .gray-box {
@@ -389,4 +391,40 @@ div>p {
     overflow: hidden;
     border: solid 0.1px #ffffff;
     background: #4f9ea1;
+}
+
+.cross{
+    border-radius: 100%;
+    width: 85px;
+    height: 85px;
+    margin-left: 11px;
+    margin-top: 45px;
+}
+.flex-between{
+    padding-top: 12px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.flex-cross{
+    display: flex;
+    margin-top: 10px;   
+}
+
+.width{
+    width: 100%;
+    margin-top: 23px;
+}
+.id-card{
+padding: 5px;
+border-radius: 100%;
+border: solid black 0.1px;
+margin-right: 20px;
+}
+
+.flex-end{
+    display: grid;
+    justify-content: flex-end;
+    align-items: flex-end;
+    min-height: 58px;
 }
