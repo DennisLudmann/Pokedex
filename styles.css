@@ -295,7 +295,7 @@ h2 {
     height: 220px;
     width: 220px;
     justify-content: center;
-    border: solid black 0.1px;
+    border: solid black 2px;
     border-bottom-left-radius: 25px;
     margin-top: 22px;
 }
@@ -422,7 +422,7 @@ div>p {
 
 .flex-cross{
     display: flex;
-    margin-top: 10px;   
+    margin-top: 18px; 
 }
 
 .width{
