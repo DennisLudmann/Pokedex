@@ -22,66 +22,80 @@ h2 {
     color: white;   */
 }
 
+
 .bg-fire {
-    background-color: rgb(255 0 0 / 81%);
+  
+    background-color: #f08030;
 }
 
 .bg-grass {
-    background-color: rgb(72, 208, 124);
+   
+    background-color: #78c850;
 }
 
 .bg-water {
-    background-color: rgb(134, 202, 254);
+  
+    background-color: #6890f0;
 }
 
 .bg-electric {
-    background-color: rgb(255, 245, 111);
+   
+    background-color: #f8d030;
 }
 
 .bg-rock {
-    background-color: rgb(179, 172, 138);
+   
+    background-color: #b8a038;
 }
 
 .bg-psychic {
-    background-color: rgba(124, 82, 140, 0.808);
+   
+    background-color: #f85888;
 }
 
 .bg-poison {
-    background-color: rgb(8 39 7 / 63%);
+  
+    background-color: #a040a0;
 }
 
 .bg-normal {
-    background-color: rgba(248, 81, 20, 0.76);
+   
+    background-color: #a8a878;
 }
 
 .bg-ghost {
-    background-color: lightgray;
+  
+    background-color: #705898;
 }
 
 .bg-ground {
-    background-color: rgba(83, 46, 16, 0.692);
+  
+    background-color: #e0c068;
 }
 
 .bg-fighting {
-    background-color: rgba(182, 124, 0, 0.65);
+  
+    background-color: #c03028;
 }
 
 .bg-bug {
-    background-color: rgba(172, 255, 47, 0.74);
+  
+    background-color: #a8b820;
 }
 
 .bg-fairy {
-    background-color: git rgb(219, 188, 210);
+   
+    background-color: #dea5de;
 }
 
 .bg-ice {
-    background-color: rgb(231, 231, 218);
+   
+    background-color: #98d8d8;
 }
 
 .bg-dragon {
     background-color: rgba(4, 0, 255, 0.5);
 }
-
 
 .d-none {
     display: none !important;
