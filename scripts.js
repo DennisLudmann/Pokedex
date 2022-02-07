@@ -8,19 +8,18 @@ async function displayOverview() {
     for (let i = 0; i < allPokemon.length; i++) {                       // load all pokemon from array
         const thisPokemon = allPokemon[i];
         let url = 'https://pokeapi.co/api/v2/pokemon/' + thisPokemon.toLowerCase(); //lowercase so it fits the URL
-
         let response = await fetch(url);                    //waiting so the function doesnt continue without this input
         currentPokemon = await response.json();             // to json so we have a file type we can work with
 
         let pokemonEntryBuild = '';                              // predefined and empty so it can be filled later (3 parts)
-
         let Types = currentPokemon["types"].length;         // checking if one or two types are defined
         pokemonEntryBuild += `
             <div id="wrapper" onclick="loadPokemon('${currentPokemon['name']}')" class="card-wrapper bg-${currentPokemon["types"]["0"]["type"]["name"]}">
                 <img src="${currentPokemon["sprites"]["other"]["dream_world"]["front_default"]}" class="card-image " alt="${currentPokemon['name']}">
                 <div class="card-description">
-                    <h2 class="card-title">${currentPokemon['name'].substring(0,1).toUpperCase() + currentPokemon['name'].substring(1)} </h2>
+                    <h2 class="card-title">${currentPokemon['name'].substring(0,1).toUpperCase() + currentPokemon['name'].substring(1)} </h2> 
                     <p class="card-text"> ${currentPokemon["types"]["0"]["type"]["name"]}</p>`
+
                     if (Types > 1) {                                    // to display only if both types are set
                         pokemonEntryBuild += `<p class="card-text">${currentPokemon["types"]["1"]["type"]["name"]}</p>`
                     }
@@ -31,18 +30,8 @@ async function displayOverview() {
             document.getElementById('overview').innerHTML += pokemonEntryBuild; // let the different elements be in place befor you display it
             
         }
-        document.getElementById('loader-container').remove();
+        hideLoader(); // remove loader when all 150 pokemon are displayed
     }
-
-/*
-    function SeconType() {
-        let Types = currentPokemon["types"].length;
-        if (Types > 1) {
-            document.getElementById('quick-fix').innerHTML += `  <p class="card-text">${currentPokemon["types"]["1"]["type"]["name"]}</p>`;
-
-        }
-    }
-*/
 
 
 function renderPokemonInfo() {  
@@ -74,28 +63,26 @@ async function loadPokemon(name) {
     currentPokemon = await response.json();                                             //declare api/json to be used later
 
     
-    renderPokemonInfo();                                                         // display single pokemoncard
+    renderPokemonInfo();                                                         // display pokedex on clicked pokemon for more details
 }
 
 
 function showCard() {
     document.getElementById('pokedex').classList.remove('d-none');
-  //  document.getElementById('overview').classList.add('d-none');
+ 
 }
 
 
 function hideCard() {
     document.getElementById('pokedex').classList.add('d-none');
-  //  document.getElementById('overview').classList.remove('d-none');
+ 
 }
 
 
-  /*
 function hideLoader() {
-    window.addEventListener("load"(){
-        document.getElementById('loader-container').classList.add('d-none')
-});
-     let el = document.getElementById('loader-container').remove();
-el.remove();
-}
-*/
+    document.getElementById('loader-container').remove();}
+
+    /*
+    window.addEventListener("load", displayOverview(){
+        document.getElementById('loader-container').remove();}
+        */
