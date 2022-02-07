@@ -131,11 +131,16 @@ h2 {
 
 #nav-container {
     display: flex;
+    position: fixed;
     justify-content: space-between;
     align-items: center;
     background-color: rgb(201, 216, 236);
     text-decoration: none;
     padding: 4px;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 3;
 }
 
 .div-left-nav {
@@ -180,8 +185,11 @@ h2 {
 }
 
 .card-wrapper {
+    margin-top: 14px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
     border-radius: calc(8px);
-    margin: 2px;
     height: 400px;
     width: 250px;
     display: grid;
@@ -441,4 +449,13 @@ margin-right: 20px;
     justify-content: flex-end;
     align-items: flex-end;
     min-height: 58px;
+    position: absolute;
+    top: 333px;
+    font-size: 15px;
+    right: -8px;
 }
+/*
+#wrapper .card-text {
+    filter: brightness(85%);
+}
+*/
