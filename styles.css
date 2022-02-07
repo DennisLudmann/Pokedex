@@ -236,6 +236,7 @@ h2 {
 .flex-column {
     height: 500px;
     width: 310px;
+    min-width: 273px;
     display: flex;
     flex-direction: column;
     background-color: rgb(220, 10, 45);
