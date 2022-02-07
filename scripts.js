@@ -31,7 +31,7 @@ async function displayOverview() {
             document.getElementById('overview').innerHTML += pokemonEntryBuild; // let the different elements be in place befor you display it
             
         }
-        
+        document.getElementById('loader-container').remove();
     }
 
 /*
@@ -89,3 +89,13 @@ function hideCard() {
   //  document.getElementById('overview').classList.remove('d-none');
 }
 
+
+  /*
+function hideLoader() {
+    window.addEventListener("load"(){
+        document.getElementById('loader-container').classList.add('d-none')
+});
+     let el = document.getElementById('loader-container').remove();
+el.remove();
+}
+*/

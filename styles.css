@@ -24,72 +24,72 @@ h2 {
 
 
 .bg-fire {
-  
+
     background-color: #f08030;
 }
 
 .bg-grass {
-   
+
     background-color: #78c850;
 }
 
 .bg-water {
-  
+
     background-color: #6890f0;
 }
 
 .bg-electric {
-   
+
     background-color: #f8d030;
 }
 
 .bg-rock {
-   
+
     background-color: #b8a038;
 }
 
 .bg-psychic {
-   
+
     background-color: #f85888;
 }
 
 .bg-poison {
-  
+
     background-color: #a040a0;
 }
 
 .bg-normal {
-   
+
     background-color: #a8a878;
 }
 
 .bg-ghost {
-  
+
     background-color: #705898;
 }
 
 .bg-ground {
-  
+
     background-color: #e0c068;
 }
 
 .bg-fighting {
-  
+
     background-color: #c03028;
 }
 
 .bg-bug {
-  
+
     background-color: #a8b820;
 }
 
 .bg-fairy {
-   
+
     background-color: #dea5de;
 }
 
 .bg-ice {
-   
+
     background-color: #98d8d8;
 }
 
@@ -415,36 +415,38 @@ div>p {
     background: #4f9ea1;
 }
 
-.cross{
+.cross {
     border-radius: 100%;
     width: 85px;
     height: 85px;
     margin-left: 11px;
     margin-top: 45px;
 }
-.flex-between{
+
+.flex-between {
     padding-top: 12px;
     display: flex;
     justify-content: space-evenly;
 }
 
-.flex-cross{
+.flex-cross {
     display: flex;
-    margin-top: 18px; 
+    margin-top: 18px;
 }
 
-.width{
+.width {
     width: 100%;
     margin-top: 23px;
 }
-.id-card{
-padding: 5px;
-border-radius: 100%;
-border: solid black 0.1px;
-margin-right: 20px;
+
+.id-card {
+    padding: 5px;
+    border-radius: 100%;
+    border: solid black 0.1px;
+    margin-right: 20px;
 }
 
-.flex-end{
+.flex-end {
     display: grid;
     justify-content: flex-end;
     align-items: flex-end;
@@ -454,8 +456,87 @@ margin-right: 20px;
     font-size: 15px;
     right: -8px;
 }
+
 /*
 #wrapper .card-text {
     filter: brightness(85%);
 }
 */
+.right-part {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+}
+
+/* here some css from the pokedex-opening*/
+.right-part {
+    animation: openPokedex 2s forwards;
+}
+
+
+
+@keyframes openPokedex {
+    30% {
+        z-index: 999
+    }
+
+    100% {
+        transform: rotateY(360deg);
+        z-index: 1;
+    }
+}
+
+/* here some css from the loader*/
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid blue;
+    border-right: 16px solid green;
+    border-bottom: 16px solid red;
+    border-left: 16px solid pink;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    margin-top: 64px;
+    z-index: 99999; 
+}
+
+.loader-container{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    backdrop-filter: blur(19px);
+}
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
