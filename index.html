@@ -44,18 +44,19 @@
 </section> 
   <div onclick="hideCard()" id="pokedex" class="d-none main-overlay">
     
-    <div class="right-part">
+    <div class="pokedex-main-container">
     <div class="flex-column leftslice">
 
-      <div class="flex-center">
+      <div class="flex-center-column">
+        <div id="pokemon-name-container" class="flex-center">
+          <span id="pokemon-name" class=""></span>
+        </div>
         <div class=" white-gameboy"> <img id="img-pokedex" src="" class=" " alt="${currentPokemon['name']}"></div>
       </div>
 
       <div class="flex-cross">
         <div class="flex">
-        <div id="pokemon-name-container" class="flex-center">
-          <span id="pokemon-name" class=""></span>
-        </div>
+       
 
         
           <div class="flex-between">
