@@ -1,5 +1,5 @@
 let allPokemon = [];
-let currentPokemon;             // globaly declader to be used later in all functions when filled
+let currentPokemon;             // globaly declared to be used later in all functions when filled
 let pokemonLoaded = 15;
 
 
@@ -9,7 +9,13 @@ async function displayOverview() {
         let response = await fetch(url);                    //waiting so the function doesnt continue without this input
         currentPokemon = await response.json();             // to json so we have a file type we can work with
         allPokemon.push(currentPokemon);
-        let pokemonEntryBuild = '';                              // predefined and empty so it can be filled later (3 parts)
+        renderPokemonOverview();                            // builds the different pokecards
+    }
+    hideLoader();                                           // remove loader when pokemonLoaded are displayed
+}
+
+function renderPokemonOverview(){
+let pokemonEntryBuild = '';                              // predefined and empty so it can be filled later (3 parts)
         let Types = currentPokemon["types"].length;         // checking if one or two types are defined
         if (Types < 2) {                                    // use the builder for one or two skills, depending on Types.length
             pokemonEntryBuild += cardGeneratorOne(pokemonEntryBuild)
@@ -17,14 +23,12 @@ async function displayOverview() {
         else {
             pokemonEntryBuild += cardGeneratorTwo(pokemonEntryBuild)
         }
-        document.getElementById('overview').innerHTML += pokemonEntryBuild; // let the different elements be in place befor you display it
-    }
-    hideLoader(); // remove loader when all 150 pokemon are displayed
+        document.getElementById('overview').innerHTML += pokemonEntryBuild; // let the different elements be in place before you display it
 }
 
 
 function renderPokemonInfo() {
-    let Types = currentPokemon["types"].length;                                                     // shows a variaty of info on selected pokemnon 
+    let Types = currentPokemon["types"].length;                                                     // shows a variety of info on selected pokemon 
     document.getElementById('pokemon-name').innerHTML = currentPokemon['name'].toUpperCase();
     document.getElementById('img-pokedex').src = currentPokemon["sprites"]["front_default"];   //its the .img so src =
     document.getElementById('skill-hp').innerHTML = currentPokemon["stats"][0]["base_stat"];
