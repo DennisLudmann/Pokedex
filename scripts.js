@@ -1,17 +1,17 @@
-let allPokemon = ["Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon", "Charizard", "Squirtle", "Wartortle", "Blastoise", "Caterpie", "Metapod", "Butterfree", "Weedle", "Kakuna", "Beedrill", "Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Ekans", "Arbok", "Pikachu", "Raichu", "Sandshrew", "Sandslash", "nidoran-f", "Nidorina", "Nidoqueen", "nidoran-m", "Nidorino", "Nidoking", "Clefairy", "Clefable", "Vulpix", "Ninetales", "Jigglypuff", "Wigglytuff", "Zubat", "Golbat", "Oddish", "Gloom", "Vileplume", "Paras", "Parasect", "Venonat", "Venomoth", "Diglett", "Dugtrio", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Poliwrath", "Abra", "Kadabra", "Alakazam", "Machop", "Machoke", "Machamp", "Bellsprout", "Weepinbell", "Victreebel", "Tentacool", "Tentacruel", "Geodude", "Graveler", "Golem", "Ponyta", "Rapidash", "Slowpoke", "Slowbro", "Magnemite", "Magneton", "Farfetchd", "Doduo", "Dodrio", "Seel", "Dewgong", "Grimer", "Muk", "Shellder", "Cloyster", "Gastly", "Haunter", "Gengar", "Onix", "Drowzee", "Hypno", "Krabby", "Kingler", "Voltorb", "Electrode", "Exeggcute", "Exeggutor", "Cubone", "Marowak", "Hitmonlee", "Hitmonchan", "Lickitung", "Koffing", "Weezing", "Rhyhorn", "Rhydon", "Chansey", "Tangela", "Kangaskhan", "Horsea", "Seadra", "Goldeen", "Seaking", "Staryu", "Starmie", "mr-mime", "Scyther", "Jynx", "Electabuzz", "Magmar", "Pinsir", "Tauros", "Magikarp", "Gyarados", "Lapras", "Ditto", "Eevee", "Vaporeon", "Jolteon", "Flareon", "Porygon", "Omanyte", "Omastar", "Kabuto", "Kabutops", "Aerodactyl", "Snorlax", "Articuno", "Zapdos", "Moltres", "Dratini", "Dragonair", "Dragonite", "Mewtwo"];
-
+let allPokemon = [];
 let currentPokemon;             // globaly declader to be used later in all functions when filled
+let pokemonLoaded = 15;
+
 
 async function displayOverview() {
-    for (let i = 0; i < allPokemon.length; i++) {                       // load all pokemon from array
-        const thisPokemon = allPokemon[i];
-        let url = 'https://pokeapi.co/api/v2/pokemon/' + thisPokemon.toLowerCase(); //lowercase so it fits the URL
+    for (let i = 1; i < pokemonLoaded; i++) {                       // load pokemon from api
+        let url = `https://pokeapi.co/api/v2/pokemon/${i}`;  
         let response = await fetch(url);                    //waiting so the function doesnt continue without this input
         currentPokemon = await response.json();             // to json so we have a file type we can work with
-
+        allPokemon.push(currentPokemon);
         let pokemonEntryBuild = '';                              // predefined and empty so it can be filled later (3 parts)
         let Types = currentPokemon["types"].length;         // checking if one or two types are defined
-        if (Types < 2) {
+        if (Types < 2) {                                    // use the builder for one or two skills, depending on Types.length
             pokemonEntryBuild += cardGeneratorOne(pokemonEntryBuild)
         }
         else {
@@ -25,7 +25,6 @@ async function displayOverview() {
 
 function renderPokemonInfo() {
     let Types = currentPokemon["types"].length;                                                     // shows a variaty of info on selected pokemnon 
-    console.log(currentPokemon);
     document.getElementById('pokemon-name').innerHTML = currentPokemon['name'].toUpperCase();
     document.getElementById('img-pokedex').src = currentPokemon["sprites"]["front_default"];   //its the .img so src =
     document.getElementById('skill-hp').innerHTML = currentPokemon["stats"][0]["base_stat"];
@@ -37,8 +36,8 @@ function renderPokemonInfo() {
     document.getElementById('height').innerHTML = 'Height:' + '&nbsp &nbsp &nbsp &nbsp &nbsp' + currentPokemon["height"] * 10 + `cm`;
     document.getElementById('weight').innerHTML = 'Weight:' + '&nbsp &nbsp &nbsp &nbsp &nbsp' + currentPokemon["weight"] / 10 + `kg`;
     document.getElementById('pokemon-name-container').classList.add('bg-${currentPokemon["types"]["0"]["type"]["name"]');
-
 }
+
 
 async function loadPokemon(name) {
     showCard();
@@ -46,8 +45,6 @@ async function loadPokemon(name) {
     let url = 'https://pokeapi.co/api/v2/pokemon/' + name;        // to lowercase to make all characters small
     let response = await fetch(url);                                                    // wait for the fetch
     currentPokemon = await response.json();                                             //declare api/json to be used later
-
-
     renderPokemonInfo();                                                         // display pokedex on clicked pokemon for more details
 }
 
@@ -57,14 +54,17 @@ function showCard() {
 
 }
 
+
 function hideCard() {
     document.getElementById('pokedex').classList.add('d-none');
 
 }
 
+
 function hideLoader() {
     document.getElementById('loader-container').remove();
 }
+
 
 function cardGeneratorOne(pokemonEntryBuild) {
     return `
