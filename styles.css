@@ -16,78 +16,64 @@ body {
     align-items: center;
 }
 
-h2 {
+.card-title {
     padding-left: 20px;
-    padding-top: 12px;
+    padding-top: 20px;
 }
 
 .bg-fire {
-
     background-color: #f08030;
 }
 
 .bg-grass {
-
     background-color: #78c850;
 }
 
 .bg-water {
-
     background-color: #6890f0;
 }
 
 .bg-electric {
-
     background-color: #f8d030;
 }
 
 .bg-rock {
-
     background-color: #b8a038;
 }
 
 .bg-psychic {
-
     background-color: #f85888;
 }
 
 .bg-poison {
-
     background-color: #a040a0;
 }
 
 .bg-normal {
-
     background-color: #a8a878;
 }
 
 .bg-ghost {
-
     background-color: #705898;
 }
 
 .bg-ground {
-
     background-color: #e0c068;
 }
 
 .bg-fighting {
-
     background-color: #c03028;
 }
 
 .bg-bug {
-
     background-color: #a8b820;
 }
 
 .bg-fairy {
-
     background-color: #dea5de;
 }
 
 .bg-ice {
-
     background-color: #98d8d8;
 }
 

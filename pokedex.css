@@ -111,7 +111,7 @@
     background-color: #939596;
 }
 
-div>p {
+.gray-box>p {
     padding: 0;
     margin: 0;
     padding-top: 8px;
@@ -131,6 +131,11 @@ div>p {
 
 }
 
+.gray-box-small>p {
+    padding: 0;
+    margin: 0;
+}
+
 .skill-container {
     display: flex;
     justify-content: space-between;
@@ -144,7 +149,7 @@ div>p {
     color: lightgray;
     border: solid lightgray 0.1px;
     border-radius: 6px;
-    margin-left: 6px;
+    margin-left: 30px;
     padding-left: 3px;
     padding-right: 3px;
     min-width: 30%;
@@ -157,7 +162,7 @@ div>p {
     color: gray;
     border: solid gray 0.1px;
     border-radius: 6px;
-    margin-right: 6px;
+    margin-right: 30px;
     padding-left: 3px;
     padding-right: 3px;
     min-width: 30%;
