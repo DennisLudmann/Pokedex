@@ -11,12 +11,15 @@ async function displayOverview() {
         allPokemon.push(currentPokemon);
         renderPokemonOverview();                            // builds the different pokecards
     }
+    isLoaderActive();                                   
+}
+
+
+function isLoaderActive(){                                    // remove loader when pokemonLoaded are displayed
     const div = document.querySelector('section');
-    debugger;
     if (div.classList.contains('loader-container')) {
         hideLoader();
     }
-                                               // remove loader when pokemonLoaded are displayed
 }
 
 
