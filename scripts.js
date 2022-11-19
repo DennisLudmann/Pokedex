@@ -11,8 +11,14 @@ async function displayOverview() {
         allPokemon.push(currentPokemon);
         renderPokemonOverview();                            // builds the different pokecards
     }
-    hideLoader();                                           // remove loader when pokemonLoaded are displayed
+    const div = document.querySelector('section');
+    debugger;
+    if (div.classList.contains('loader-container')) {
+        hideLoader();
+    }
+                                               // remove loader when pokemonLoaded are displayed
 }
+
 
 function renderPokemonOverview(){
 let pokemonEntryBuild = '';                              // predefined and empty so it can be filled later (3 parts)
@@ -67,6 +73,12 @@ function hideCard() {
 
 function hideLoader() {
     document.getElementById('loader-container').remove();
+}
+
+
+function addMorePokemon(){
+    pokemonLoaded = pokemonLoaded + 15;
+    displayOverview();
 }
 
 
