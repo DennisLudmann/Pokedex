@@ -1,30 +1,46 @@
-let allPokemon = [];
-let currentPokemon;             // globaly declared to be used later in all functions when filled
-let pokemonLoaded = 15;
+let allLoadedPokemon = [];
+let currentPokemon;
+let loadCounter = 15;
+let listOfPokemonNames = [];
 
 
 async function displayOverview() {
-    for (let i = 1; i < pokemonLoaded; i++) {                       // load pokemon from api
+    for (let i = 1; i < loadCounter; i++) {                       // load pokemon from api
         let url = `https://pokeapi.co/api/v2/pokemon/${i}`;  
         let response = await fetch(url);                    //waiting so the function doesnt continue without this input
         currentPokemon = await response.json();             // to json so we have a file type we can work with
-        allPokemon.push(currentPokemon);
+        allLoadedPokemon.push(currentPokemon);
         renderPokemonOverview();                            // builds the different pokecards
     }
-    isLoaderActive();                                   
+    // isLoaderActive();
+    fillPokemonNames();                                   
 }
 
+async function fillPokemonNames(){
+    let url = `https://pokeapi.co/api/v2/pokemon/?limit=100`;
+    let response = await fetch(url);                    //waiting so the function doesnt continue without this input
+    listOfPokemonNames = await response.json();             // to json so we have a file type we can work with
+    console.log(listOfPokemonNames['results'][0]['name']);
+    // return listOfPokemonNames.results;
 
-function isLoaderActive(){                                    // remove loader when pokemonLoaded are displayed
+    // for (let i = 0; i < 100; i++) {
+    //     let pokemons = url[i];
+    //     let pokemon = (pokemons['name']);
+    //     console.log(pokemon)
+    // }
+};
+
+function isLoaderActive() {                                    // remove loader when loadCounter are displayed
     const div = document.querySelector('section');
-    if (div.classList.contains('loader-container')) {
+    console.log(div);
+    if (div.classList.contains('loader-container') == true) {
         hideLoader();
     }
 }
 
 
-function renderPokemonOverview(){
-let pokemonEntryBuild = '';                              // predefined and empty so it can be filled later (3 parts)
+function renderPokemonOverview() {
+let pokemonEntryBuild = '';                                 // predefined and empty so it can be filled later
         let Types = currentPokemon["types"].length;         // checking if one or two types are defined
         if (Types < 2) {                                    // use the builder for one or two skills, depending on Types.length
             pokemonEntryBuild += cardGeneratorOne(pokemonEntryBuild)
@@ -37,9 +53,9 @@ let pokemonEntryBuild = '';                              // predefined and empty
 
 
 function renderPokemonInfo() {
-    let Types = currentPokemon["types"].length;                                                     // shows a variety of info on selected pokemon 
+    let Types = currentPokemon["types"].length;                                                         // shows a variety of info on selected pokemon 
     document.getElementById('pokemon-name').innerHTML = currentPokemon['name'].toUpperCase();
-    document.getElementById('img-pokedex').src = currentPokemon["sprites"]["front_default"];   //its the .img so src =
+    document.getElementById('img-pokedex').src = currentPokemon["sprites"]["front_default"];            //its the .img so src =
     document.getElementById('skill-hp').innerHTML = currentPokemon["stats"][0]["base_stat"];
     document.getElementById('skill-attack').innerHTML = currentPokemon["stats"][1]["base_stat"];
     document.getElementById('skill-defence').innerHTML = currentPokemon["stats"][2]["base_stat"];
@@ -55,10 +71,10 @@ function renderPokemonInfo() {
 async function loadPokemon(name) {
     showCard();
     console.log('The picked Pokemon is', name);
-    let url = 'https://pokeapi.co/api/v2/pokemon/' + name;        // to lowercase to make all characters small
-    let response = await fetch(url);                                                    // wait for the fetch
-    currentPokemon = await response.json();                                             //declare api/json to be used later
-    renderPokemonInfo();                                                         // display pokedex on clicked pokemon for more details
+    let url = 'https://pokeapi.co/api/v2/pokemon/' + name;                                  // to lowercase to make all characters small
+    let response = await fetch(url);                                                        // wait for the fetch
+    currentPokemon = await response.json();                                                 //declare api/json to be used later
+    renderPokemonInfo();                                                                    // display pokedex on clicked pokemon for more details
 }
 
 
@@ -80,8 +96,9 @@ function hideLoader() {
 
 
 function addMorePokemon(){
-    pokemonLoaded = pokemonLoaded + 15;
+    loadCounter = loadCounter + 15;
     displayOverview();
+    
 }
 
 
