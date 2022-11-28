@@ -154,7 +154,6 @@ body {
 }
 
 .card-img-overlay {
-    /* background: linear-gradient(294deg, #8c8c9c, transparent);*/
     position: absolute;
     top: 0;
     right: 0;
@@ -205,6 +204,11 @@ body {
     padding-left: 20px;
 }
 
+.flex-center{
+    display: flex;
+    align-items: center;
+}
+
 /* here some css from the loader*/
 .u-rubber-band {
     -webkit-animation: rubberBand 1200ms infinite;
@@ -234,10 +238,12 @@ section article {
 }
 
 .addPokemon{
+    cursor: pointer;
+    font-size: larger;
     background-color:#f14e4e;
     display:inline-block;
-    padding:0.3em 1.2em;
-    margin: 6em 0 0 3em;
+    padding:0.6em 2.2em;
+    margin: 4.5em 0 0 3em;
     border:0.16em solid rgba(255,255,255,0);
     box-sizing: border-box;
     text-decoration:none;
