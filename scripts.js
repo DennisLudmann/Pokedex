@@ -1,6 +1,7 @@
 let allLoadedPokemon = [];
 let currentPokemon;
 let loadCounter = 15;
+let responseJsonNames =[]
 let listOfPokemonNames = [];
 
 
@@ -19,8 +20,13 @@ async function displayOverview() {
 async function fillPokemonNames(){
     let url = `https://pokeapi.co/api/v2/pokemon/?limit=100`;
     let response = await fetch(url);                    //waiting so the function doesnt continue without this input
-    listOfPokemonNames = await response.json();             // to json so we have a file type we can work with
-    console.log(listOfPokemonNames['results'][0]['name']);
+    responseJsonNames = await response.json();             // to json so we have a file type we can work with
+    console.log(responseJsonNames['results'][0]['name']);
+    for (let i = 0; i < responseJsonNames['results'].length; i++) {
+        let name = responseJsonNames['results'][i]['name'];
+        listOfPokemonNames.push(name);
+    }
+    console.log(listOfPokemonNames);
     // return listOfPokemonNames.results;
 
     // for (let i = 0; i < 100; i++) {
