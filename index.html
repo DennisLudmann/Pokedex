@@ -12,8 +12,9 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="pokedex.css">
+  <link rel="stylesheet" href="css/pokedex.css">
+  <link rel="stylesheet" href="css/background.css">
+  <link rel="stylesheet" href="css/styles.css">
   <script src="scripts.js"></script>
   <link  rel="stylesheet"    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
@@ -31,8 +32,9 @@
       </a>
     </div>
   </nav>
+  <div class="flex-center">
   <button class="addPokemon bouncy" onclick="addMorePokemon()">MORE POKÈMON</button>
-
+</div>
 
 <!-- later use or erase later
   <section id="loader-container"  class=" loader-container">
@@ -44,21 +46,15 @@
 
   <div onclick="hideCard()" id="pokedex" class="d-none main-overlay">
     
-    <div class="pokedex-main-container">
+  <div class="pokedex-main-container">
     <div class="flex-column leftslice">
-
       <div class="flex-center-column">
         <div id="pokemon-name-container" class="flex-center">
           <span id="pokemon-name" class=""></span>
         </div>
         <div class=" white-gameboy"> <img id="img-pokedex" src="" class=" " alt="${currentPokemon['name']}"></div>
       </div>
-
-      <div class="flex-cross">
-       
-       
-
-        
+      <div class="flex-cross">        
           <div class="flex-between">
             <div class="gray-box-small">
               <p id="type-1">Type 1</p>
@@ -67,13 +63,10 @@
               <p id="id">id</p>
             </div>
           </div>
-        
-
         <img src="img/cross.png" class="cross">
       </div>
     </div>
     <div class="middle-slice"></div>
-
     <div class="flex-column rightslice">
       <div class="flex-center stipes rounded-top-left rounded-top-right">
         <div class="gray-box">
@@ -92,13 +85,10 @@
         <div class="blue-sqare rounded-bottom-right"></div>
       </div>
       <div class="flex-center">
-
         <div class="stipes width">
-
           <div class="skill-container">
             <span class="skill-writing">hp</span>
             <span id="skill-hp" class="skill-stats">hp</span>
-
           </div>
           <div class="skill-container">
             <span class="skill-writing">attack</span>
@@ -113,7 +103,6 @@
             <span id="skill-speed" class="skill-stats">speed</span>
           </div>
         </div>
-
       </div>
     </div>
   </div>
