@@ -24,14 +24,13 @@ async function displayOverview() {
 }
 
 async function fillPokemonNames(){
-    let url = `https://pokeapi.co/api/v2/pokemon/?limit=151`;
-    let response = await fetch(url);                    //waiting so the function doesnt continue without this input
-    responseJsonNames = await response.json();             // to json so we have a file type we can work with
+    let url = `https://pokeapi.co/api/v2/pokemon/?limit=151`;       // 151 is the number of first gen pokemon
+    let response = await fetch(url);                                //waiting so the function doesnt continue without this input
+    responseJsonNames = await response.json();                       // to json so we have a file type we can work with
     for (let i = 0; i < responseJsonNames['results'].length; i++) {
         let name = responseJsonNames['results'][i];
         listOfPokemonNames.push(name);
     }
-    console.log(listOfPokemonNames); // WIP to filter the whole database
 };
 
 
