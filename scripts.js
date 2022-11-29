@@ -5,19 +5,26 @@ let responseJsonNames =[];
 let listOfPokemonNames = [];        // loaded names for seach use
 
 
+function render(){
+    displayOverview();
+    fillPokemonNames();
+}
+
+
 async function displayOverview() {
+    let content = document.getElementById('overview');
+    content.innerHTML='';
     for (let i = 1; i < loadCounter; i++) {                       // load pokemon from api
         let url = `https://pokeapi.co/api/v2/pokemon/${i}`;  
         let response = await fetch(url);                    //waiting so the function doesnt continue without this input
         currentPokemon = await response.json();             // to json so we have a file type we can work with
         allLoadedPokemon.push(currentPokemon);
         renderPokemonOverview();                            // builds the different pokecards
-    }
-    fillPokemonNames();                                   
+    }                                   
 }
 
 async function fillPokemonNames(){
-    let url = `https://pokeapi.co/api/v2/pokemon/?limit=100`;
+    let url = `https://pokeapi.co/api/v2/pokemon/?limit=151`;
     let response = await fetch(url);                    //waiting so the function doesnt continue without this input
     responseJsonNames = await response.json();             // to json so we have a file type we can work with
     for (let i = 0; i < responseJsonNames['results'].length; i++) {
@@ -25,13 +32,6 @@ async function fillPokemonNames(){
         listOfPokemonNames.push(name);
     }
     console.log(listOfPokemonNames); // WIP to filter the whole database
-    // return listOfPokemonNames.results;
-
-    // for (let i = 0; i < 100; i++) {
-    //     let pokemons = url[i];
-    //     let pokemon = (pokemons['name']);
-    //     console.log(pokemon)
-    // }
 };
 
 
@@ -48,15 +48,17 @@ let pokemonEntryBuild = '';                                 // predefined and em
 }
 
 
-async function searchPokemon(){
+async function searchPokemon() {
     let search = document.getElementById('search').value;
     let content = document.getElementById('overview');
     content.innerHTML='';
     search = search.toLowerCase();
-    console.log(search);
+    if (!search) {                                              // go back to the initial listing if no search is active
+        displayOverview();
+        return
+    }
     for (let i = 0; i < listOfPokemonNames.length; i++) {
         let pokemon = listOfPokemonNames[i];
-        debugger;
         if (pokemon['name'].includes(search)) {
             let url = `${pokemon['url']}`;  
             let response = await fetch(url);                    //waiting so the function doesnt continue without this input
@@ -67,27 +69,6 @@ async function searchPokemon(){
     }
 }
 
-// for (let i = 1; i < loadCounter; i++) {                       // load pokemon from api
-//     let url = `https://pokeapi.co/api/v2/pokemon/${i}`;  
-//     let response = await fetch(url);                    //waiting so the function doesnt continue without this input
-//     currentPokemon = await response.json();             // to json so we have a file type we can work with
-//     allLoadedPokemon.push(currentPokemon);
-//     renderPokemonOverview();                            // builds the different pokecards
-// }
-
-function searchStates() {
-    let search = document.getElementById('search').value;
-    let content = document.getElementById('container');
-    content.innerHTML='';
-    search = search.toLowerCase();
-    console.log(search);
-   for (let i = 0; i < states.length; i++) {
-    let state = states[i];
-    if (state['name'].toLowerCase().includes(search)) {
-        content.innerHTML += generateHTML(state, state['population']);
-    }
-   }
-}
 
 function renderPokemonInfo() {
     let Types = currentPokemon["types"].length;                                                         // shows a variety of info on selected pokemon 
