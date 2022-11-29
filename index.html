@@ -32,8 +32,13 @@
       </a>
     </div>
   </nav>
-  <div class="flex-center">
-  <button class="addPokemon bouncy" onclick="addMorePokemon()">MORE POKÈMON</button>
+
+<div class="interactive-wrapper">
+    <button class="addPokemon bouncy" onclick="addMorePokemon()">MORE POKÈMON</button>
+    <div>
+      <label for="site-search">Suche</label>
+      <input type="text" id="search" onkeyup="searchPokemon()">
+    </div>
 </div>
 
 <!-- later use or erase later
@@ -52,7 +57,7 @@
         <div id="pokemon-name-container" class="flex-center">
           <span id="pokemon-name" class=""></span>
         </div>
-        <div class=" white-gameboy"> <img id="img-pokedex" src="" class=" " alt="${currentPokemon['name']}"></div>
+        <div class="white-gameboy"> <img id="img-pokedex" alt="${currentPokemon['name']}"></div>
       </div>
       <div class="flex-cross">        
           <div class="flex-between">
