@@ -1,30 +1,19 @@
 let allLoadedPokemon = [];
 let currentPokemon;
 let loadCounter = 15;
-let responseJsonNames = [];
-let listOfPokemonNames = [];        // loaded names for seach use
-let isLoading = false;
+let listOfPokemonNames = [];                                        // loaded all names for search use
+let isLoading = false;                                              // don`t allow a new iteration before an existing one is finished
+
 
 function render() {
     displayOverview();
-    // required(search);
     fillPokemonNames();
 }
-
-function required(search) {
-    if (search.value.length == 0) {
-        displayOverview();
-        return false;
-    }
-    return true;
-}
-
 
 
 async function displayOverview() {
     if (!isLoading) {
         isLoading = true;
-        console.log(isLoading);
         let content = document.getElementById('overview');
         content.innerHTML = '';
         for (let i = 1; i < loadCounter; i++) {                       // load pokemon from api
@@ -35,20 +24,19 @@ async function displayOverview() {
             renderPokemonOverview();                            // builds the different pokecards
         }
         isLoading = false;
-        console.log(isLoading);
     }
     else {
         setTimeout(() => {
             displayOverview();
         }, 50);
     }
-
 }
+
 
 async function fillPokemonNames() {
     let url = `https://pokeapi.co/api/v2/pokemon/?limit=151`;       // 151 is the number of first gen pokemon
     let response = await fetch(url);                                //waiting so the function doesnt continue without this input
-    responseJsonNames = await response.json();                       // to json so we have a file type we can work with
+    let responseJsonNames = await response.json();                       // to json so we have a file type we can work with
     for (let i = 0; i < responseJsonNames['results'].length; i++) {
         let name = responseJsonNames['results'][i];
         listOfPokemonNames.push(name);
@@ -97,8 +85,8 @@ async function searchPokemon() {
             searchPokemon();
         }, 50);
     }
-
 }
+
 
 function renderPokemonInfo() {                                                                         // shows a variety of info on selected pokemon 
     document.getElementById('pokemon-name').innerHTML = currentPokemon['name'].toUpperCase();
@@ -117,7 +105,6 @@ function renderPokemonInfo() {                                                  
 
 async function loadPokemon(name) {
     showCard();
-    console.log('The picked Pokemon is', name);
     let url = 'https://pokeapi.co/api/v2/pokemon/' + name;                                  // to lowercase to make all characters small
     let response = await fetch(url);                                                        // wait for the fetch
     currentPokemon = await response.json();                                                 //declare api/json to be used later
@@ -153,10 +140,11 @@ function cardGeneratorOne(pokemonEntryBuild) {
         <div class="card-description">
             <h2 class="card-title">${currentPokemon['name'].substring(0, 1).toUpperCase() + currentPokemon['name'].substring(1)} </h2> 
              <p class="card-text"> ${currentPokemon["types"]["0"]["type"]["name"]}</p>
-            <div class="flex-end"><span class=" id-card"># ${currentPokemon["id"]}</span></div>
+            <div class="flex-end"><span class="id-card"># ${currentPokemon["id"]}</span></div>
         </div>
     </div>`
 }
+
 
 function cardGeneratorTwo(pokemonEntryBuild) {
     return `
@@ -166,18 +154,7 @@ function cardGeneratorTwo(pokemonEntryBuild) {
             <h2 class="card-title">${currentPokemon['name'].substring(0, 1).toUpperCase() + currentPokemon['name'].substring(1)} </h2> 
             <p class="card-text"> ${currentPokemon["types"]["0"]["type"]["name"]}</p>                                      
             <p class="card-text">${currentPokemon["types"]["1"]["type"]["name"]}</p>
-            <div class="flex-end"><span class=" id-card"># ${currentPokemon["id"]}</span></div>
+            <div class="flex-end"><span class="id-card"># ${currentPokemon["id"]}</span></div>
         </div>
     </div>`
 }
-
-// inactive code for later use or cleanup
-
-
-// function isLoaderActive() {                                    // remove loader when loadCounter are displayed
-//     const div = document.querySelector('section');
-//     console.log(div);
-//     if (div.classList.contains('loader-container') == true) {
-//         hideLoader();
-//     }
-// }

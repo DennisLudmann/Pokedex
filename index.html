@@ -16,48 +16,38 @@
   <link rel="stylesheet" href="css/background.css">
   <link rel="stylesheet" href="css/styles.css">
   <script src="scripts.js"></script>
-  <link  rel="stylesheet"    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
 <body onload="render()">
   <nav class="">
-      <a class="nav-container" class="navbar-brand" href="#">
-          <img class="nav-img" src="./img/pokeball.png" alt="" class="">
-          <h1 class="nav-text">POKÉDEX</h1>
-          <h3 class="nav-textsmall">1st Generation</h3>
-      </a>
-    
+    <a class="nav-container" class="navbar-brand" href="#">
+      <img class="nav-img" src="./img/pokeball.png" alt="" class="">
+      <h1 class="nav-text">POKÉDEX</h1>
+      <h3 class="nav-textsmall">1st Generation</h3>
+    </a>
+
   </nav>
 
-<div class="interactive-wrapper">
+  <div class="interactive-wrapper">
     <button class="addPokemon bouncy" onclick="addMorePokemon()">ADD POKÉMON</button>
     <div class="search-wrapper">
       <label for="site-search">Search:</label>
       <input onkeyup="searchPokemon()" type="text" id="search">
-      <!-- <button onclick="searchPokemon()">Search</button> -->
     </div>
-</div>
-
-<!-- later use or erase later
-  <section id="loader-container"  class=" loader-container">
-  <article>
-    <div class="o-pokeball c-loader u-rubber-band"></div>
-    <h3 class="u-text-center">Catch them all</h3>
-  </article>
-</section>  -->
+  </div>
 
   <div onclick="hideCard()" id="pokedex" class="d-none main-overlay">
-    
-  <div class="pokedex-main-container">
-    <div class="flex-column leftslice">
-      <div class="flex-center-column">
-        <div id="pokemon-name-container" class="flex-center">
-          <span id="pokemon-name" class=""></span>
+
+    <div class="pokedex-main-container">
+      <div class="flex-column leftslice">
+        <div class="flex-center-column">
+          <div id="pokemon-name-container" class="flex-center">
+            <span id="pokemon-name" class=""></span>
+          </div>
+          <div class="white-gameboy"> <img id="img-pokedex" alt="${currentPokemon['name']}"></div>
         </div>
-        <div class="white-gameboy"> <img id="img-pokedex" alt="${currentPokemon['name']}"></div>
-      </div>
-      <div class="flex-cross">        
+        <div class="flex-cross">
           <div class="flex-between">
             <div class="gray-box-small">
               <p id="type-1">Type 1</p>
@@ -66,49 +56,49 @@
               <p id="id">id</p>
             </div>
           </div>
-        <img src="img/cross.png" class="cross">
-      </div>
-    </div>
-    <div class="middle-slice"></div>
-    <div class="flex-column rightslice">
-      <div class="flex-center stipes rounded-top-left rounded-top-right">
-        <div class="gray-box">
-          <p id="height" class=""></p>
-          <p id="weight" class=""></p>
+          <img src="img/cross.png" class="cross">
         </div>
       </div>
-      <div class="blue-sqare-container ">
-        <div class="blue-sqare rounded-top-left"></div>
-        <div class="blue-sqare"></div>
-        <div class="blue-sqare"></div>
-        <div class="blue-sqare rounded-top-right"></div>
-        <div class="blue-sqare rounded-bottom-left"></div>
-        <div class="blue-sqare"></div>
-        <div class="blue-sqare"></div>
-        <div class="blue-sqare rounded-bottom-right"></div>
-      </div>
-      <div class="flex-center">
-        <div class="stipes width">
-          <div class="skill-container">
-            <span class="skill-writing">hp</span>
-            <span id="skill-hp" class="skill-stats">hp</span>
+      <div class="middle-slice"></div>
+      <div class="flex-column rightslice">
+        <div class="flex-center stipes rounded-top-left rounded-top-right">
+          <div class="gray-box">
+            <p id="height" class=""></p>
+            <p id="weight" class=""></p>
           </div>
-          <div class="skill-container">
-            <span class="skill-writing">attack</span>
-            <span id="skill-attack" class="skill-stats">attack</span>
-          </div>
-          <div class="skill-container">
-            <span class="skill-writing">defence</span>
-            <span id="skill-defence" class="skill-stats">defence</span>
-          </div>
-          <div class="skill-container">
-            <span class="skill-writing">speed</span>
-            <span id="skill-speed" class="skill-stats">speed</span>
+        </div>
+        <div class="blue-sqare-container ">
+          <div class="blue-sqare rounded-top-left"></div>
+          <div class="blue-sqare"></div>
+          <div class="blue-sqare"></div>
+          <div class="blue-sqare rounded-top-right"></div>
+          <div class="blue-sqare rounded-bottom-left"></div>
+          <div class="blue-sqare"></div>
+          <div class="blue-sqare"></div>
+          <div class="blue-sqare rounded-bottom-right"></div>
+        </div>
+        <div class="flex-center">
+          <div class="stipes width">
+            <div class="skill-container">
+              <span class="skill-writing">hp</span>
+              <span id="skill-hp" class="skill-stats">hp</span>
+            </div>
+            <div class="skill-container">
+              <span class="skill-writing">attack</span>
+              <span id="skill-attack" class="skill-stats">attack</span>
+            </div>
+            <div class="skill-container">
+              <span class="skill-writing">defence</span>
+              <span id="skill-defence" class="skill-stats">defence</span>
+            </div>
+            <div class="skill-container">
+              <span class="skill-writing">speed</span>
+              <span id="skill-speed" class="skill-stats">speed</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
   </div>
 
   <div id="overview" class="container-overview"></div>
