@@ -1,29 +1,51 @@
 let allLoadedPokemon = [];
 let currentPokemon;
 let loadCounter = 15;
-let responseJsonNames =[];
+let responseJsonNames = [];
 let listOfPokemonNames = [];        // loaded names for seach use
+let isLoading = false;
 
-
-function render(){
+function render() {
     displayOverview();
+    // required(search);
     fillPokemonNames();
 }
 
-
-async function displayOverview() {
-    let content = document.getElementById('overview');
-    content.innerHTML='';
-    for (let i = 1; i < loadCounter; i++) {                       // load pokemon from api
-        let url = `https://pokeapi.co/api/v2/pokemon/${i}`;  
-        let response = await fetch(url);                    //waiting so the function doesnt continue without this input
-        currentPokemon = await response.json();             // to json so we have a file type we can work with
-        allLoadedPokemon.push(currentPokemon);
-        renderPokemonOverview();                            // builds the different pokecards
-    }                                   
+function required(search) {
+    if (search.value.length == 0) {
+        displayOverview();
+        return false;
+    }
+    return true;
 }
 
-async function fillPokemonNames(){
+
+
+async function displayOverview() {
+    if (!isLoading) {
+        isLoading = true;
+        console.log(isLoading);
+        let content = document.getElementById('overview');
+        content.innerHTML = '';
+        for (let i = 1; i < loadCounter; i++) {                       // load pokemon from api
+            let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
+            let response = await fetch(url);                    //waiting so the function doesnt continue without this input
+            currentPokemon = await response.json();             // to json so we have a file type we can work with
+            allLoadedPokemon.push(currentPokemon);
+            renderPokemonOverview();                            // builds the different pokecards
+        }
+        isLoading = false;
+        console.log(isLoading);
+    }
+    else {
+        setTimeout(() => {
+            displayOverview();
+        }, 50);
+    }
+
+}
+
+async function fillPokemonNames() {
     let url = `https://pokeapi.co/api/v2/pokemon/?limit=151`;       // 151 is the number of first gen pokemon
     let response = await fetch(url);                                //waiting so the function doesnt continue without this input
     responseJsonNames = await response.json();                       // to json so we have a file type we can work with
@@ -35,42 +57,50 @@ async function fillPokemonNames(){
 
 
 function renderPokemonOverview() {
-let pokemonEntryBuild = '';                                 // predefined and empty so it can be filled later
-        let Types = currentPokemon["types"].length;         // checking if one or two types are defined
-        if (Types < 2) {                                    // use the builder for one or two skills, depending on Types.length
-            pokemonEntryBuild += cardGeneratorOne(pokemonEntryBuild)
-        }
-        else {
-            pokemonEntryBuild += cardGeneratorTwo(pokemonEntryBuild)
-        }
-        document.getElementById('overview').innerHTML += pokemonEntryBuild; // let the different elements be in place before you display it
+    let pokemonEntryBuild = '';                                 // predefined and empty so it can be filled later
+    let Types = currentPokemon["types"].length;         // checking if one or two types are defined
+    if (Types < 2) {                                    // use the builder for one or two skills, depending on Types.length
+        pokemonEntryBuild += cardGeneratorOne(pokemonEntryBuild)
+    }
+    else {
+        pokemonEntryBuild += cardGeneratorTwo(pokemonEntryBuild)
+    }
+    document.getElementById('overview').innerHTML += pokemonEntryBuild; // let the different elements be in place before you display it
 }
 
 
 async function searchPokemon() {
     let search = document.getElementById('search').value;
     let content = document.getElementById('overview');
-    content.innerHTML='';
+    content.innerHTML = '';
     search = search.toLowerCase();
-    if (!search) {                                              // go back to the initial listing if no search is active
+    if (search == "") {                                              // go back to the initial listing if no search is active
         displayOverview();
         return
     }
-    for (let i = 0; i < listOfPokemonNames.length; i++) {
-        let pokemon = listOfPokemonNames[i];
-        if (pokemon['name'].includes(search)) {
-            let url = `${pokemon['url']}`;  
-            let response = await fetch(url);                    //waiting so the function doesnt continue without this input
-            currentPokemon = await response.json();             // to json so we have a file type we can work with
-            allLoadedPokemon.push(currentPokemon);
-            renderPokemonOverview();              
+    if (!isLoading) {
+        isLoading = true;
+        for (let i = 0; i < listOfPokemonNames.length; i++) {
+            let pokemon = listOfPokemonNames[i];
+            if (pokemon['name'].includes(search)) {
+                let url = `${pokemon['url']}`;
+                let response = await fetch(url);                    //waiting so the function doesnt continue without this input
+                currentPokemon = await response.json();             // to json so we have a file type we can work with
+                allLoadedPokemon.push(currentPokemon);
+                renderPokemonOverview();
+            }
         }
+        isLoading = false;
     }
+    else {
+        setTimeout(() => {
+            searchPokemon();
+        }, 50);
+    }
+
 }
 
-
-function renderPokemonInfo() {
-    let Types = currentPokemon["types"].length;                                                         // shows a variety of info on selected pokemon 
+function renderPokemonInfo() {                                                                         // shows a variety of info on selected pokemon 
     document.getElementById('pokemon-name').innerHTML = currentPokemon['name'].toUpperCase();
     document.getElementById('img-pokedex').src = currentPokemon["sprites"]["front_default"];            //its the .img so src =
     document.getElementById('skill-hp').innerHTML = currentPokemon["stats"][0]["base_stat"];
@@ -110,7 +140,7 @@ function hideLoader() {
 }
 
 
-function addMorePokemon(){
+function addMorePokemon() {
     loadCounter = loadCounter + 15;
     displayOverview();
 }

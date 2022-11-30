@@ -67,6 +67,21 @@ body {
     z-index: 3;
 }
 
+input, label{
+    background-color: #f14e4e;
+    border: none;
+    padding: 5px;
+    color: white;
+    font-size: large;
+    letter-spacing: 1px;
+    outline: none;
+    text-shadow: 0 0.04em 0.04em rgb(0 0 0 / 35%);
+}
+
+.flex {
+    display: flex;
+}
+
 .overview {
     display: flex;
     justify-content: space-evenly;
@@ -80,11 +95,9 @@ body {
 }
 
 .container-overview {
-    display: flex;
-    justify-content: space-evenly;
-    width: (100%-4px);
-    width: calc(100% - 4px);
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: 0 3em;
 }
 
 .card-img-overlay {
@@ -142,7 +155,8 @@ body {
 .interactive-wrapper{
     display: flex;
     align-items: flex-end;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    margin: 5.5em 3em 0 3em;
 }
 
 /* here some css from the loader*/
@@ -178,8 +192,6 @@ section article {
     font-size: larger;
     background-color:#f14e4e;
     display:inline-block;
-    padding:0.6em 2.2em;
-    margin: 4.5em 0 0 3em;
     border:0.16em solid rgba(255,255,255,0);
     box-sizing: border-box;
     text-decoration:none;
@@ -245,7 +257,24 @@ section article {
     100%{top:0em;}
 }
 
-@media only screen and (max-width: 410px) {
+@media only screen and (max-width: 1100px) {
+    .container-overview {
+        grid-template-columns: 1fr 1fr 1fr;
+}
+}
+@media only screen and (max-width: 900px) {
+    .container-overview {
+        margin: 0 2em;
+        grid-template-columns: 1fr 1fr;
+}
+}
+@media only screen and (max-width: 500px) {
+    .container-overview {
+        margin: 0 1em;
+        grid-template-columns: 1fr;
+}
+}
+@media only screen and (max-width: 676px) {
     .card-wrapper {
         height: 285px;
         width: 171px;
