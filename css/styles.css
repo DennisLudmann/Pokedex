@@ -100,7 +100,7 @@ input, label {
 .container-overview {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px;
+    gap: 12px;
     margin: 1em 8em;
 }
 

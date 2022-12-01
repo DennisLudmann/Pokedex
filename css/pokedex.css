@@ -219,13 +219,6 @@
     margin-top: 23px;
 }
 
-.id-card {
-    padding: 5px;
-    border-radius: 100%;
-    border: solid black 0.1px;
-    margin-right: 20px;
-}
-
 .flex-end {
     display: grid;
     justify-content: flex-end;
@@ -316,11 +309,6 @@
         position: relativ;
         font-size: 15px;
         margin-bottom: 5px;
-    }
-
-    .card-wrapper {
-        height: 272px;
-        width: 171px;
     }
 
     h2{

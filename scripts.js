@@ -16,13 +16,7 @@ async function displayOverview() {
         isLoading = true;
         let content = document.getElementById('overview');
         content.innerHTML = '';
-        for (let i = 1; i < loadCounter; i++) {                       // load pokemon from api
-            let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
-            let response = await fetch(url);                    //waiting so the function doesnt continue without this input
-            currentPokemon = await response.json();             // to json so we have a file type we can work with
-            allLoadedPokemon.push(currentPokemon);
-            renderPokemonOverview();                            // builds the different pokecards
-        }
+        loadContent();
         isLoading = false;
     }
     else {
@@ -32,11 +26,20 @@ async function displayOverview() {
     }
 }
 
+async function  loadContent() {                                     // loader based on numeric
+for (let i = 1; i < loadCounter; i++) {                             // load pokemon from api
+    let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
+    let response = await fetch(url);                                //waiting so the function doesnt continue without this input
+    currentPokemon = await response.json();                         // to json so we have a file type we can work with
+    allLoadedPokemon.push(currentPokemon);
+    renderPokemonOverview();                                        // builds the different pokecards
+}
+}
 
 async function fillPokemonNames() {
-    let url = `https://pokeapi.co/api/v2/pokemon/?limit=151`;       // 151 is the number of first gen pokemon
-    let response = await fetch(url);                                //waiting so the function doesnt continue without this input
-    let responseJsonNames = await response.json();                       // to json so we have a file type we can work with
+    let url = `https://pokeapi.co/api/v2/pokemon/?limit=151`;               // 151 is the number of first gen pokemon
+    let response = await fetch(url);                                        //waiting so the function doesnt continue without this input
+    let responseJsonNames = await response.json();                          // to json so we have a file type we can work with
     for (let i = 0; i < responseJsonNames['results'].length; i++) {
         let name = responseJsonNames['results'][i];
         listOfPokemonNames.push(name);
@@ -46,8 +49,8 @@ async function fillPokemonNames() {
 
 function renderPokemonOverview() {
     let pokemonEntryBuild = '';                                 // predefined and empty so it can be filled later
-    let Types = currentPokemon["types"].length;         // checking if one or two types are defined
-    if (Types < 2) {                                    // use the builder for one or two skills, depending on Types.length
+    let Types = currentPokemon["types"].length;                 // checking if one or two types are defined
+    if (Types < 2) {                                            // use the builder for one or two skills, depending on Types.length
         pokemonEntryBuild += cardGeneratorOne(pokemonEntryBuild)
     }
     else {
@@ -68,22 +71,27 @@ async function searchPokemon() {
     }
     if (!isLoading) {
         isLoading = true;
-        for (let i = 0; i < listOfPokemonNames.length; i++) {
-            let pokemon = listOfPokemonNames[i];
-            if (pokemon['name'].includes(search)) {
-                let url = `${pokemon['url']}`;
-                let response = await fetch(url);                    //waiting so the function doesnt continue without this input
-                currentPokemon = await response.json();             // to json so we have a file type we can work with
-                allLoadedPokemon.push(currentPokemon);
-                renderPokemonOverview();
-            }
-        }
+        loadContentSearch();
         isLoading = false;
     }
     else {
         setTimeout(() => {
             searchPokemon();
         }, 50);
+    }
+}
+
+
+async function loadContentSearch() {                                // loader based on word search (not numeric)
+    for (let i = 0; i < listOfPokemonNames.length; i++) {
+        let pokemon = listOfPokemonNames[i];
+        if (pokemon['name'].includes(search)) {
+            let url = `${pokemon['url']}`;
+            let response = await fetch(url);                   
+            currentPokemon = await response.json();            
+            allLoadedPokemon.push(currentPokemon);
+            renderPokemonOverview();
+        }
     }
 }
 
