@@ -98,10 +98,10 @@ input, label {
 }
 
 .container-overview {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     gap: 4px;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    margin: 1em 3em;
+    margin: 1em 8em;
 }
 
 .card-img-overlay {
@@ -161,39 +161,17 @@ input, label {
     margin-right: 20px;
 }
 
+/* .wrapper {
+    margin: 5em 0.5em 0 0.5em;
+} */
+
 .interactive-wrapper {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    margin: 5.5em 6.5em 0 6.5em;
-}
-
-/* here some css from the loader*/
-.u-rubber-band {
-    -webkit-animation: rubberBand 1200ms infinite;
-    animation: rubberBand 1200ms infinite;
-}
-
-section article {
-
-    padding-bottom: 30px;
-}
-
-.u-text-center {
-    text-align: center;
-}
-
-.loader-container {
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    z-index: 2;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    backdrop-filter: blur(19px);
+    border-bottom: inset #0c1c3e 10px;
+    margin-top: 5em;
+    padding: 0.5em 2.5em;
 }
 
 .addPokemon {
@@ -220,86 +198,40 @@ section article {
     0% {
         top: 0em
     }
-
     40% {
         top: 0em
     }
-
     43% {
         top: -0.9em
     }
-
     46% {
         top: 0em
     }
-
     48% {
         top: -0.4em
     }
-
     50% {
         top: 0em
     }
-
     100% {
         top: 0em;
     }
 }
 
-@media only screen and (max-width: 1510px) {
+
+@media only screen and (max-width: 1000px) {
+    .container-overview {
+        margin: 1em 0em;
+    }
     .interactive-wrapper {
-        margin: 5.5em 5.5em 0 5.5em;
-    }
-}
-@media only screen and (max-width: 1424px) {
-    .container-overview {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        padding: 0.5em 1.5em;
     }
 }
 
-@media only screen and (max-width: 1110px) {
+@media only screen and (max-width: 480px) {
     .interactive-wrapper {
-        margin: 5.5em 4.5em 0 4.5em;
-    }
-    .container-overview {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-}
-
-@media only screen and (max-width: 900px) {
-    .card-wrapper {
-        height: 285px;
-        width: 171px;
+       flex-direction: column;
+       align-items: baseline;
+       padding: 1.5em 0.5em 0.5em 0.5em;
     }
 }
-
-@media only screen and (max-width: 650px) {
-    .container-overview {
-        margin: 0.5em 0.5em;
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .interactive-wrapper {
-        flex-direction: column;
-        align-items: unset;
-        justify-content: unset;
-        margin: 5.5em 3em 0 3em;
-        align-items: center;
-    }
-}
-
-@media only screen and (max-width: 500px) {
-    .container-overview {
-        grid-template-columns: 1fr;
-    }
-    .nav-textsmall{
-        display: none;
-    }
-}
-
-/* @media only screen and (max-width: 700px) {
-    .card-wrapper {
-        height: 285px;
-        width: 171px;
-    }
-} */
