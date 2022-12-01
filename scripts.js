@@ -11,20 +11,21 @@ function render() {
 }
 
 
-async function displayOverview() {
-    if (!isLoading) {
+async function displayOverview() {                                  // main card loading function
+    if (!isLoading) {                                               // doesnt trigger if content is already being loaded into container
         isLoading = true;
         let content = document.getElementById('overview');
         content.innerHTML = '';
         loadContent();
         isLoading = false;
     }
-    else {
+    else {                                                          // retry if isLoading was still true 
         setTimeout(() => {
             displayOverview();
         }, 50);
     }
 }
+
 
 async function  loadContent() {                                     // loader based on numeric
 for (let i = 1; i < loadCounter; i++) {                             // load pokemon from api
@@ -35,6 +36,7 @@ for (let i = 1; i < loadCounter; i++) {                             // load poke
     renderPokemonOverview();                                        // builds the different pokecards
 }
 }
+
 
 async function fillPokemonNames() {
     let url = `https://pokeapi.co/api/v2/pokemon/?limit=151`;               // 151 is the number of first gen pokemon
@@ -72,10 +74,13 @@ async function searchPokemon() {
     }
     if (!isLoading) {
         isLoading = true;
-        loadContentSearch(search);
-        isLoading = false;
+        loadContentSearch(search); 
+        setTimeout(() => {
+            isLoading = false;
+        }, 100);                                 // sends the searched phrase to loader
+       
     }
-    else {
+    else {                                                            // retry if isLoading was still true
         setTimeout(() => {
             searchPokemon();
         }, 50);
@@ -84,7 +89,6 @@ async function searchPokemon() {
 
 
 async function loadContentSearch(search) {                                // loader based on word search (not numeric)
-    debugger;
     for (let i = 0; i < listOfPokemonNames.length; i++) {
         let pokemon = listOfPokemonNames[i];
         if (pokemon['name'].includes(search)) {
@@ -137,13 +141,13 @@ function hideLoader() {
 }
 
 
-function addMorePokemon() {
+function addMorePokemon() {                                // when add pokemon is triggered, adds 15 more and renders
     loadCounter = loadCounter + 15;
     displayOverview();
 }
 
 
-function cardGeneratorOne(pokemonEntryBuild) {
+function cardGeneratorOne(pokemonEntryBuild) {          // returns html to function (1 skill)
     return `
     <div id="wrapper" onclick="loadPokemon('${currentPokemon['name']}')" class="card-wrapper bg-${currentPokemon["types"]["0"]["type"]["name"]}">
         <img src="${currentPokemon["sprites"]["other"]["dream_world"]["front_default"]}" class="card-image " alt="${currentPokemon['name']}">
@@ -156,7 +160,7 @@ function cardGeneratorOne(pokemonEntryBuild) {
 }
 
 
-function cardGeneratorTwo(pokemonEntryBuild) {
+function cardGeneratorTwo(pokemonEntryBuild) {          // returns html to function (2 skill)
     return `
     <div id="wrapper" onclick="loadPokemon('${currentPokemon['name']}')" class="card-wrapper bg-${currentPokemon["types"]["0"]["type"]["name"]}">
         <img src="${currentPokemon["sprites"]["other"]["dream_world"]["front_default"]}" class="card-image " alt="${currentPokemon['name']}">
