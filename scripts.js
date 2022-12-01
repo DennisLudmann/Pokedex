@@ -65,13 +65,14 @@ async function searchPokemon() {
     let content = document.getElementById('overview');
     content.innerHTML = '';
     search = search.toLowerCase();
+    debugger;
     if (search == "") {                                              // go back to the initial listing if no search is active
         displayOverview();
         return
     }
     if (!isLoading) {
         isLoading = true;
-        loadContentSearch();
+        loadContentSearch(search);
         isLoading = false;
     }
     else {
@@ -82,7 +83,8 @@ async function searchPokemon() {
 }
 
 
-async function loadContentSearch() {                                // loader based on word search (not numeric)
+async function loadContentSearch(search) {                                // loader based on word search (not numeric)
+    debugger;
     for (let i = 0; i < listOfPokemonNames.length; i++) {
         let pokemon = listOfPokemonNames[i];
         if (pokemon['name'].includes(search)) {
